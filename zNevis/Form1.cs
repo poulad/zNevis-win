@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -18,6 +12,7 @@ namespace zNevis
       #region fields
       string fileName;
       Process p = null;
+      SrtSubtitle srt;
       #endregion
       public Form1()
       {
@@ -32,41 +27,11 @@ namespace zNevis
          Console.WriteLine(splitContainer2.Panel2.Handle.ToInt64());
       }
 
-      private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-      {
-
-      }
-
       private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
       {
 
       }
-
-      private void pasteToolStripButton_Click(object sender, EventArgs e)
-      {
-
-      }
-
-      private void trackBar2_Scroll(object sender, EventArgs e)
-      {
-
-      }
-
-      private void trackBar1_Scroll(object sender, EventArgs e)
-      {
-
-      }
-
-      private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-      {
-
-      }
-
-      private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-      {
-
-      }
-
+      
       private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
       {
 
@@ -116,6 +81,8 @@ namespace zNevis
 
       private void Form1_FormClosing(object sender, FormClosingEventArgs e)
       {
+         if (p == null)
+            return;
          p.Kill();
          p.Dispose();
       }
@@ -127,6 +94,14 @@ namespace zNevis
       private void mplayerPanel_Click(object sender, EventArgs e)
       {
          p.StandardInput.Write("p\n");
+      }
+
+      private void newToolButton_Click(object sender, EventArgs e)
+      {
+         var sfd = new SaveFileDialog();
+         if (sfd.ShowDialog() != DialogResult.OK)
+            return;
+         srt = SrtSubtitle.CreateNew(sfd.FileName, false);
       }
    }
 }
