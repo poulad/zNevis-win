@@ -62,7 +62,7 @@ namespace zNevis
          using (var fileStream = File.Create(filePath))
          {
             string text = "1\n" +
-                        "00:00:00.000 --> 00:00:00.000\n" +
+                        //"00:00:00.000 --> 00:00:00.000\n" +
                         "\n";
             byte[] bytes = new UTF8Encoding(true).GetBytes(text);
             fileStream.Write(bytes, 0, bytes.Length);

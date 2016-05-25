@@ -87,7 +87,6 @@
          // splitContainer1.Panel2
          // 
          this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-         this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
          this.splitContainer1.Size = new System.Drawing.Size(846, 546);
          this.splitContainer1.SplitterDistance = 275;
          this.splitContainer1.TabIndex = 0;
@@ -320,7 +319,6 @@
          // openFileDialog1
          // 
          this.openFileDialog1.FileName = "openFileDialog1";
-         this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
          // 
          // Form1
          // 
@@ -331,7 +329,6 @@
          this.Controls.Add(this.splitContainer1);
          this.Name = "Form1";
          this.Text = "Form1";
-         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
          this.Load += new System.EventHandler(this.Form1_Load);
          this.splitContainer1.Panel1.ResumeLayout(false);
          this.splitContainer1.Panel2.ResumeLayout(false);
