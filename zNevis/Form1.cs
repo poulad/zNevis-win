@@ -13,6 +13,7 @@ namespace zNevis
       MPlayerController mplayer;
       SrtSubtitle srt;
       #endregion
+
       public Form1()
       {
          InitializeComponent();
@@ -23,18 +24,33 @@ namespace zNevis
       {
          mplayer = new MPlayerController(mplayerPanel.Handle.ToString());
          mplayer.OnOutputReceived += (s) =>
-         {
-            Console.WriteLine(s);
-         };
+            {
+               Console.WriteLine(s);
+            }
+         ;
+
+         mplayer.OnErrorReceived += (s) =>
+            {  
+               Console.ForegroundColor = ConsoleColor.Red;
+               Console.WriteLine(s);
+               Console.ResetColor();
+            }
+         ;
+
+         mplayer.VideoLengthChanged += (length) =>
+            {
+               //lengthBar.Maximum = (int)length;
+               Console.WriteLine("new length:::::" + length);
+            }
+         ;
       }
-     
+
 
       private void openToolStripButton_Click(object sender, EventArgs e)
       {
          if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
          {
-            //fileName = openFileDialog1.FileName;
-            //Play();
+            mplayer.LoadFile(openFileDialog1.FileName);
          }
       }
 

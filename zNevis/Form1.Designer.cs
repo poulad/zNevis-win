@@ -44,7 +44,7 @@
          this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
          this.panel1 = new System.Windows.Forms.Panel();
          this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-         this.trackBar1 = new System.Windows.Forms.TrackBar();
+         this.lengthBar = new System.Windows.Forms.TrackBar();
          this.trackBar2 = new System.Windows.Forms.TrackBar();
          this.mplayerPanel = new System.Windows.Forms.Panel();
          this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -66,7 +66,7 @@
          this.toolStrip1.SuspendLayout();
          this.panel1.SuspendLayout();
          this.flowLayoutPanel1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
          this.tabControl1.SuspendLayout();
          this.tabSubtitle.SuspendLayout();
@@ -88,7 +88,7 @@
          // 
          this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
          this.splitContainer1.Size = new System.Drawing.Size(846, 546);
-         this.splitContainer1.SplitterDistance = 275;
+         this.splitContainer1.SplitterDistance = 216;
          this.splitContainer1.TabIndex = 0;
          // 
          // splitContainer2
@@ -105,8 +105,8 @@
          // 
          this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.Control;
          this.splitContainer2.Panel2.Controls.Add(this.panel1);
-         this.splitContainer2.Size = new System.Drawing.Size(846, 275);
-         this.splitContainer2.SplitterDistance = 282;
+         this.splitContainer2.Size = new System.Drawing.Size(846, 216);
+         this.splitContainer2.SplitterDistance = 224;
          this.splitContainer2.TabIndex = 0;
          // 
          // toolStrip1
@@ -125,7 +125,7 @@
             this.saveToolStripButton});
          this.toolStrip1.Location = new System.Drawing.Point(0, 0);
          this.toolStrip1.Name = "toolStrip1";
-         this.toolStrip1.Size = new System.Drawing.Size(24, 275);
+         this.toolStrip1.Size = new System.Drawing.Size(24, 216);
          this.toolStrip1.TabIndex = 2;
          this.toolStrip1.Text = "toolStrip1";
          // 
@@ -221,32 +221,33 @@
          this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
          this.panel1.Location = new System.Drawing.Point(0, 0);
          this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(560, 275);
+         this.panel1.Size = new System.Drawing.Size(618, 216);
          this.panel1.TabIndex = 0;
          // 
          // flowLayoutPanel1
          // 
-         this.flowLayoutPanel1.Controls.Add(this.trackBar1);
+         this.flowLayoutPanel1.Controls.Add(this.lengthBar);
          this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 233);
+         this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 174);
          this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-         this.flowLayoutPanel1.Size = new System.Drawing.Size(515, 42);
+         this.flowLayoutPanel1.Size = new System.Drawing.Size(573, 42);
          this.flowLayoutPanel1.TabIndex = 2;
          // 
-         // trackBar1
+         // lengthBar
          // 
-         this.trackBar1.Location = new System.Drawing.Point(3, 3);
-         this.trackBar1.Name = "trackBar1";
-         this.trackBar1.Size = new System.Drawing.Size(506, 45);
-         this.trackBar1.TabIndex = 0;
+         this.lengthBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.lengthBar.Location = new System.Drawing.Point(3, 3);
+         this.lengthBar.Name = "lengthBar";
+         this.lengthBar.Size = new System.Drawing.Size(506, 45);
+         this.lengthBar.TabIndex = 0;
          // 
          // trackBar2
          // 
          this.trackBar2.Dock = System.Windows.Forms.DockStyle.Right;
-         this.trackBar2.Location = new System.Drawing.Point(515, 0);
+         this.trackBar2.Location = new System.Drawing.Point(573, 0);
          this.trackBar2.Name = "trackBar2";
          this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
-         this.trackBar2.Size = new System.Drawing.Size(45, 275);
+         this.trackBar2.Size = new System.Drawing.Size(45, 216);
          this.trackBar2.TabIndex = 1;
          // 
          // mplayerPanel
@@ -255,7 +256,7 @@
          this.mplayerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
          this.mplayerPanel.Location = new System.Drawing.Point(0, 0);
          this.mplayerPanel.Name = "mplayerPanel";
-         this.mplayerPanel.Size = new System.Drawing.Size(560, 275);
+         this.mplayerPanel.Size = new System.Drawing.Size(618, 216);
          this.mplayerPanel.TabIndex = 0;
          this.mplayerPanel.Click += new System.EventHandler(this.mplayerPanel_Click);
          // 
@@ -266,7 +267,7 @@
          this.tabControl1.Location = new System.Drawing.Point(0, 0);
          this.tabControl1.Name = "tabControl1";
          this.tabControl1.SelectedIndex = 0;
-         this.tabControl1.Size = new System.Drawing.Size(846, 267);
+         this.tabControl1.Size = new System.Drawing.Size(846, 326);
          this.tabControl1.TabIndex = 0;
          // 
          // tabSubtitle
@@ -275,7 +276,7 @@
          this.tabSubtitle.Location = new System.Drawing.Point(4, 22);
          this.tabSubtitle.Name = "tabSubtitle";
          this.tabSubtitle.Padding = new System.Windows.Forms.Padding(3);
-         this.tabSubtitle.Size = new System.Drawing.Size(838, 241);
+         this.tabSubtitle.Size = new System.Drawing.Size(838, 300);
          this.tabSubtitle.TabIndex = 1;
          this.tabSubtitle.Text = "Subtitle";
          this.tabSubtitle.UseVisualStyleBackColor = true;
@@ -290,7 +291,7 @@
          this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
          this.dataGridView1.Location = new System.Drawing.Point(3, 3);
          this.dataGridView1.Name = "dataGridView1";
-         this.dataGridView1.Size = new System.Drawing.Size(832, 235);
+         this.dataGridView1.Size = new System.Drawing.Size(832, 294);
          this.dataGridView1.TabIndex = 0;
          // 
          // Column1
@@ -345,7 +346,7 @@
          this.panel1.PerformLayout();
          this.flowLayoutPanel1.ResumeLayout(false);
          this.flowLayoutPanel1.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
          this.tabControl1.ResumeLayout(false);
          this.tabSubtitle.ResumeLayout(false);
@@ -380,7 +381,7 @@
       private System.Windows.Forms.Panel panel1;
       private System.Windows.Forms.Panel mplayerPanel;
       private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-      private System.Windows.Forms.TrackBar trackBar1;
+      private System.Windows.Forms.TrackBar lengthBar;
       private System.Windows.Forms.StatusStrip statusStrip1;
       private System.Windows.Forms.OpenFileDialog openFileDialog1;
    }
