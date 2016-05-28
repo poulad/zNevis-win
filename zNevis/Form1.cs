@@ -79,5 +79,19 @@ namespace zNevis
          mplayer.PlayPause();
       }
 
+      private void lengthBar_MouseUp(object sender, EventArgs e)
+      {
+      }
+
+      private void lengthBar_MouseDown(object sender, MouseEventArgs e)
+      {
+         mplayer.Pause();
+      }
+
+      private void lengthBar_MouseCaptureChanged(object sender, EventArgs e)
+      {
+         mplayer.Seek(lengthBar.Value);
+         //mplayer.PlayPause();
+      }
    }
 }

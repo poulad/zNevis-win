@@ -43,6 +43,9 @@
          this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
          this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
          this.panel1 = new System.Windows.Forms.Panel();
+         this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+         this.button1 = new System.Windows.Forms.Button();
+         this.lengthBar = new System.Windows.Forms.TrackBar();
          this.trackBar2 = new System.Windows.Forms.TrackBar();
          this.mplayerPanel = new System.Windows.Forms.Panel();
          this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -53,9 +56,6 @@
          this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.statusStrip1 = new System.Windows.Forms.StatusStrip();
          this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-         this.lengthBar = new System.Windows.Forms.TrackBar();
-         this.button1 = new System.Windows.Forms.Button();
-         this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
          this.splitContainer1.Panel1.SuspendLayout();
          this.splitContainer1.Panel2.SuspendLayout();
@@ -66,12 +66,12 @@
          this.splitContainer2.SuspendLayout();
          this.toolStrip1.SuspendLayout();
          this.panel1.SuspendLayout();
+         this.flowLayoutPanel1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
          this.tabControl1.SuspendLayout();
          this.tabSubtitle.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).BeginInit();
-         this.flowLayoutPanel1.SuspendLayout();
          this.SuspendLayout();
          // 
          // splitContainer1
@@ -225,6 +225,36 @@
          this.panel1.Size = new System.Drawing.Size(665, 280);
          this.panel1.TabIndex = 0;
          // 
+         // flowLayoutPanel1
+         // 
+         this.flowLayoutPanel1.Controls.Add(this.button1);
+         this.flowLayoutPanel1.Controls.Add(this.lengthBar);
+         this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 238);
+         this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+         this.flowLayoutPanel1.Size = new System.Drawing.Size(620, 42);
+         this.flowLayoutPanel1.TabIndex = 2;
+         // 
+         // button1
+         // 
+         this.button1.Location = new System.Drawing.Point(3, 3);
+         this.button1.Name = "button1";
+         this.button1.Padding = new System.Windows.Forms.Padding(1);
+         this.button1.Size = new System.Drawing.Size(75, 23);
+         this.button1.TabIndex = 0;
+         this.button1.Text = "button1";
+         this.button1.UseVisualStyleBackColor = true;
+         // 
+         // lengthBar
+         // 
+         this.lengthBar.Location = new System.Drawing.Point(84, 3);
+         this.lengthBar.Name = "lengthBar";
+         this.lengthBar.Size = new System.Drawing.Size(486, 45);
+         this.lengthBar.TabIndex = 1;
+         this.lengthBar.MouseCaptureChanged += new System.EventHandler(this.lengthBar_MouseCaptureChanged);
+         this.lengthBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lengthBar_MouseDown);
+         this.lengthBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lengthBar_MouseUp);
+         // 
          // trackBar2
          // 
          this.trackBar2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -305,33 +335,6 @@
          // 
          this.openFileDialog1.FileName = "openFileDialog1";
          // 
-         // lengthBar
-         // 
-         this.lengthBar.Location = new System.Drawing.Point(84, 3);
-         this.lengthBar.Name = "lengthBar";
-         this.lengthBar.Size = new System.Drawing.Size(486, 45);
-         this.lengthBar.TabIndex = 1;
-         // 
-         // button1
-         // 
-         this.button1.Location = new System.Drawing.Point(3, 3);
-         this.button1.Name = "button1";
-         this.button1.Padding = new System.Windows.Forms.Padding(1);
-         this.button1.Size = new System.Drawing.Size(75, 23);
-         this.button1.TabIndex = 0;
-         this.button1.Text = "button1";
-         this.button1.UseVisualStyleBackColor = true;
-         // 
-         // flowLayoutPanel1
-         // 
-         this.flowLayoutPanel1.Controls.Add(this.button1);
-         this.flowLayoutPanel1.Controls.Add(this.lengthBar);
-         this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 238);
-         this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-         this.flowLayoutPanel1.Size = new System.Drawing.Size(620, 42);
-         this.flowLayoutPanel1.TabIndex = 2;
-         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,13 +358,13 @@
          this.toolStrip1.PerformLayout();
          this.panel1.ResumeLayout(false);
          this.panel1.PerformLayout();
+         this.flowLayoutPanel1.ResumeLayout(false);
+         this.flowLayoutPanel1.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
          this.tabControl1.ResumeLayout(false);
          this.tabSubtitle.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.lengthBar)).EndInit();
-         this.flowLayoutPanel1.ResumeLayout(false);
-         this.flowLayoutPanel1.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 

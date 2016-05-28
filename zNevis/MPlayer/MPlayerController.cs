@@ -53,6 +53,16 @@ namespace zNevis
          _p.StandardInput.Write("p\n");
       }
 
+      public void Pause()
+      {
+         _p.StandardInput.Write("pausing_keep_force pause\n");
+      }
+
+      public void Seek(double toPos)
+      {
+         _p.StandardInput.Write("pausing_keep_force seek {0} 2\npause\npausing_keep_force pause\n", toPos);
+      }
+
       /// <summary>
       /// Loads file from path into the mplayer and starts playing
       /// </summary>
