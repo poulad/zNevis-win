@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
@@ -13,11 +12,13 @@ namespace zNevis
       Process _p = null;
       bool _isIdentifying = false;
       Regex _idTagRegex = new Regex(@"ID_(?<tag>[A-Z_\d]+)=(?<value>[A-Z\d\.:\\]+)");
+      Regex _positionRegex = new Regex(@"V:\s+(?<pos>\d+\.\d+)\s+");
       Dictionary<string, string> _mediaIdDict = new Dictionary<string, string>();
       #endregion
 
       #region Properties
       public string FileName { set; get; }
+      public double Position { get; private set; }
       #endregion
 
       #region Events
@@ -25,8 +26,9 @@ namespace zNevis
       public event OnDataReceived OnOutputReceived;
       public event OnDataReceived OnErrorReceived;
 
-      public delegate void NumericIdNotifire(double length);
-      public event NumericIdNotifire VideoLengthChanged;
+      public delegate void NumericIdNotifier(double length);
+      public event NumericIdNotifier VideoLengthChanged;
+      public event NumericIdNotifier VideoPositionChanged;
       #endregion
 
       public MPlayerController(string wid)
@@ -64,40 +66,52 @@ namespace zNevis
          _p.StandardInput.Write(command);
       }
 
-      private async void ReadStdOut(object sender, DataReceivedEventArgs e)
+      private void ReadStdOut(object sender, DataReceivedEventArgs e)
       {
          if (_isIdentifying)
          {
-            if (e.Data.ToUpper().Contains("ID_PAUSED"))
+            ReadStdOutId(e.Data);
+         }
+         else if (_positionRegex.IsMatch(e.Data))
+         {
+            double pos;
+            if (double.TryParse(_positionRegex.Match(e.Data).Groups[1].Value, out pos))
             {
-               _isIdentifying = false;
-               foreach (var x in _mediaIdDict)
-               {
-                  System.Console.WriteLine(x);
-               }
-               VideoLengthChanged(Convert.ToDouble(_mediaIdDict["length"]));
+               Position = pos;
             }
-            else
-            {
-               foreach (Match match in _idTagRegex.Matches(e.Data.ToUpper()))
-               {
-                  GroupCollection groups = match.Groups;
-                  System.Console.ForegroundColor = System.ConsoleColor.Green;
-                  System.Console.WriteLine(string.Format("{0}::{1}", groups[1].Value, groups[2].Value));
-                  _mediaIdDict[groups[1].Value.ToLower()] = groups[2].Value;
-                  System.Console.ResetColor();
-                  //return;
-               }
-            }
-
+            VideoPositionChanged(Position);
          }
 
-         await Task.Factory.StartNew(() => { OnOutputReceived(e.Data); });
+         OnOutputReceived(e.Data);
       }
 
-      private async void ReadStdErr(object sender, DataReceivedEventArgs e)
+      private void ReadStdOutId(string output)
       {
-         await Task.Factory.StartNew(() => { OnErrorReceived(e.Data); });
+         if (output.ToUpper().Contains("ID_PAUSED"))
+         {
+            _isIdentifying = false;
+            foreach (var x in _mediaIdDict)
+            {
+               System.Console.WriteLine(x);
+            }
+            VideoLengthChanged(Convert.ToDouble(_mediaIdDict["length"]));
+         }
+         else
+         {
+            foreach (Match match in _idTagRegex.Matches(output.ToUpper()))
+            {
+               GroupCollection groups = match.Groups;
+               System.Console.ForegroundColor = System.ConsoleColor.Green;
+               System.Console.WriteLine(string.Format("{0}::{1}", groups[1].Value, groups[2].Value));
+               _mediaIdDict[groups[1].Value.ToLower()] = groups[2].Value;
+               System.Console.ResetColor();
+            }
+         }
+      }
+
+      private void ReadStdErr(object sender, DataReceivedEventArgs e)
+      {
+         OnErrorReceived(e.Data);
       }
 
    }

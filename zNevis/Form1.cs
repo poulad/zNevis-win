@@ -30,7 +30,7 @@ namespace zNevis
          ;
 
          mplayer.OnErrorReceived += (s) =>
-            {  
+            {
                Console.ForegroundColor = ConsoleColor.Red;
                Console.WriteLine(s);
                Console.ResetColor();
@@ -39,8 +39,20 @@ namespace zNevis
 
          mplayer.VideoLengthChanged += (length) =>
             {
+               lengthBar.Invoke(new Action(() => { lengthBar.Maximum = (int)length; lengthBar.Value = lengthBar.Maximum / 2; }));
+
                //lengthBar.Maximum = (int)length;
+
                Console.WriteLine("new length:::::" + length);
+            }
+         ;
+
+         mplayer.VideoPositionChanged += (pos) =>
+            {
+               lengthBar.Invoke(new Action(() =>
+               {
+                  lengthBar.Value = (int)pos;
+               }));
             }
          ;
       }
@@ -66,5 +78,6 @@ namespace zNevis
       {
          mplayer.PlayPause();
       }
+
    }
 }
